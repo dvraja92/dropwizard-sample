@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -jar target/dropzone-1.0-SNAPSHOT.jar
+web: java $JAVA_OPTS -Ddw.http.port=80 -Ddw.http.adminPort=81 -jar target/dropzone-1.0-SNAPSHOT.jar

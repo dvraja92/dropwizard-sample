@@ -89,6 +89,23 @@
                     </archive>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>com.jcabi</groupId>
+                <artifactId>jcabi-heroku-maven-plugin</artifactId>
+                <version>0.8</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>deploy</goal>
+                        </goals>
+                        <configuration>
+                            <server>heroku.com</server>
+                            <name>dropwizardsample</name>
+                            <procfile>web: java -jar server config.yml</procfile>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 </project>

@@ -12,15 +12,3 @@ swagger:
 config:
   appName: Java-Sample
   appBaseUrl: https://dropwizardsample.herokuapp.com/
-
-server:
-  adminMinThreads: 1
-  adminMaxThreads: 64
-  adminContextPath: /
-  applicationContextPath: /
-  applicationConnectors:
-    - type: http
-      port: 80
-  adminConnectors:
-    - type: http
-      port: 80

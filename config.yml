@@ -11,16 +11,16 @@ swagger:
 
 config:
   appName: Java-Sample
-  appBaseUrl: https://dropwizardsample.herokuapp.com/
+  appBaseUrl: http://dev2.decipherzone.com:7070/
 
-#server:
-#  adminMinThreads: 1
-#  adminMaxThreads: 64
-#  adminContextPath: /
-#  applicationContextPath: /
-#  applicationConnectors:
-#    - type: http
-#      port: 8080
-#  adminConnectors:
-#    - type: http
-#      port: 8081
+server:
+  adminMinThreads: 1
+  adminMaxThreads: 64
+  adminContextPath: /
+  applicationContextPath: /
+  applicationConnectors:
+    - type: http
+      port: 7070
+  adminConnectors:
+    - type: http
+      port: 7071

@@ -32,7 +32,8 @@ import java.util.EnumSet;
 class SampleApplication extends Application<ApplicationConfiguration> {
 
     public static void main(final String[] args) throws Exception {
-        new SampleApplication().run(args);
+        String[] param = {"server", "config.yml"};
+        new SampleApplication().run(param);
     }
 
     @Override

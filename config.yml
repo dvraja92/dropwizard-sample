@@ -21,10 +21,10 @@ server:
   applicationConnectors:
     - type: http
       port: 80
-    - type: https
-      port: 443
+#    - type: https
+#      port: 443
   adminConnectors:
     - type: http
-      port: 81
-    - type: https
-      port: 82
+      port: 80
+#    - type: https
+#      port: 443

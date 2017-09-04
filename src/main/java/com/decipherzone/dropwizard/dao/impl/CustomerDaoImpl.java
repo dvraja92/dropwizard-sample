@@ -1,5 +1,6 @@
 package com.decipherzone.dropwizard.dao.impl;
 
+import com.decipherzone.dropwizard.AppConstants;
 import com.decipherzone.dropwizard.dao.CustomerDao;
 import com.decipherzone.dropwizard.dao.BaseDao;
 import com.mongodb.BasicDBObject;
@@ -35,7 +36,7 @@ public class CustomerDaoImpl implements CustomerDao, BaseDao<BasicDBObject> {
     public List<BasicDBObject> getAllCustomers(){
         List<BasicDBObject> customerList = new ArrayList<>();
 
-        MongoCursor<BasicDBObject> iterator = getCollection(mongoClient, BasicDBObject.class).find().batchSize(100).iterator();
+        MongoCursor<BasicDBObject> iterator = getCollection(mongoClient, AppConstants.CUSTOMER_COLLECTION, BasicDBObject.class).find().batchSize(100).iterator();
         while (iterator.hasNext()){
             customerList.add(iterator.next());
         }

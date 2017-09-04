@@ -14,8 +14,8 @@ import com.mongodb.client.MongoCollection;
 
 public interface BaseDao<T> {
 
-    default MongoCollection<T> getCollection(MongoClient mongoClient, Class<T> t){
-        return mongoClient.getDatabase(AppConstants.APP_DATABASE_NAME).getCollection(t.getClass().getName(), t);
+    default MongoCollection<T> getCollection(MongoClient mongoClient, String collectionName, Class<T> returnClass){
+        return mongoClient.getDatabase(AppConstants.APP_DATABASE_NAME).getCollection(collectionName, returnClass);
     }
 
 }

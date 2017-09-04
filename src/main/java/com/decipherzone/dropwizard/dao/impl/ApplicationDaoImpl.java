@@ -41,7 +41,7 @@ public class ApplicationDaoImpl implements ApplicationDao, BaseDao<BasicDBObject
     }
 
     private boolean loadCustomers(){
-        MongoCollection<BasicDBObject> customerCollection = getCollection(mongoClient, BasicDBObject.class);
+        MongoCollection<BasicDBObject> customerCollection = getCollection(mongoClient, AppConstants.CUSTOMER_COLLECTION, BasicDBObject.class);
 
         if (customerCollection.count() == 0){
             List<BasicDBObject> customerList = new ArrayList<>();

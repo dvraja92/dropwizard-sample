@@ -10,11 +10,11 @@ package com.decipherzone.dropwizard;
 
 public class AppConstants {
 
-    public static final String DB_USERNAME = "database_dz";
-    public static final String DB_PASSWORD = "decipher@123#";
+    public static final String DB_USERNAME = "sampledb";
+    public static final String DB_PASSWORD = "sampledb@123#";
     public static final String DB_HOST = "dev1.decipherzone.com";
     public static final int DB_PORT = 27017;
-    public static final String DB_AUTH = "";
+    public static final String DB_AUTH = "sample-db";
     public static final String APP_DATABASE_NAME = "sample-db";
 
     public static final String APP_NAME = "Java-Sample";

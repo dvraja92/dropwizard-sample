@@ -6,6 +6,8 @@ import com.mongodb.MongoCredential;
 import com.mongodb.ServerAddress;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.Collections;
 
 /**
@@ -24,7 +26,6 @@ public class AppConfiguration {
     @JsonProperty("appBaseUrl")
     private String appBaseUrl;
 
-    @JsonProperty("database")
     private DbConfig dbConfig = new DbConfig();
 
     public MongoClient getDataSource() {

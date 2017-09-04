@@ -1,7 +1,12 @@
 package com.decipherzone.dropwizard.config;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoCredential;
+import com.mongodb.ServerAddress;
 import org.hibernate.validator.constraints.NotEmpty;
+
+import java.util.Collections;
 
 /**
  * Created on 3/9/17 3:38 PM by Raja Dushyant Vashishtha
@@ -12,15 +17,20 @@ import org.hibernate.validator.constraints.NotEmpty;
  */
 public class AppConfiguration {
 
-    private static final String APP_NAME = "appName";
-    private static final String APP_BASE_URL = "appBaseUrl";
-
     @NotEmpty
-    @JsonProperty(APP_NAME)
+    @JsonProperty("appName")
     private String appName;
 
-    @JsonProperty(APP_BASE_URL)
+    @JsonProperty("appBaseUrl")
     private String appBaseUrl;
+
+    @JsonProperty("database")
+    private DbConfig dbConfig = new DbConfig();
+
+    public MongoClient getDataSource() {
+        MongoCredential credential = MongoCredential.createCredential(dbConfig.getUsername(), dbConfig.getDbName(), dbConfig.getPassword().toCharArray());
+        return new MongoClient(new ServerAddress(dbConfig.getHost(), dbConfig.getPort()), Collections.singletonList(credential));
+    }
 
     public String getAppBaseUrl()
     {

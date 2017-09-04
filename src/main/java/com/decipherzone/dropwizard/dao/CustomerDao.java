@@ -1,6 +1,6 @@
 package com.decipherzone.dropwizard.dao;
 
-import com.decipherzone.dropwizard.bean.Customer;
+import com.mongodb.BasicDBObject;
 
 import java.util.List;
 
@@ -18,6 +18,6 @@ public interface CustomerDao {
      * Getting all customers
      * @return List of customers
      */
-    List<Customer> getAllCustomers();
+    List<BasicDBObject> getAllCustomers();
 
 }

@@ -14,13 +14,10 @@ import io.federecio.dropwizard.swagger.SwaggerBundleConfiguration;
 
 class ApplicationConfiguration extends Configuration {
 
-    private static final String CONFIG = "config";
-    private static final String SWAGGER = "swagger";
-
-    @JsonProperty(CONFIG)
+    @JsonProperty("config")
     private AppConfiguration appConfig;
 
-    @JsonProperty(SWAGGER)
+    @JsonProperty("swagger")
     private SwaggerBundleConfiguration swaggerBundleConfiguration;
 
     public AppConfiguration getAppConfig() {

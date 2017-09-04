@@ -1,14 +1,19 @@
 package com.decipherzone.dropwizard.config;
 
+import com.decipherzone.dropwizard.dao.ApplicationDao;
 import com.decipherzone.dropwizard.dao.CustomerDao;
+import com.decipherzone.dropwizard.dao.impl.ApplicationDaoImpl;
 import com.decipherzone.dropwizard.dao.impl.CustomerDaoImpl;
 import com.decipherzone.dropwizard.health.ApplicationHealthCheck;
 import com.decipherzone.dropwizard.resources.CustomerResource;
+import com.decipherzone.dropwizard.service.ApplicationService;
 import com.decipherzone.dropwizard.service.CustomerService;
+import com.decipherzone.dropwizard.service.impl.ApplicationServiceImpl;
 import com.decipherzone.dropwizard.service.impl.CustomerServiceImpl;
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import com.mongodb.MongoClient;
 import io.dropwizard.Application;
 import io.dropwizard.jersey.errors.LoggingExceptionMapper;
 import io.dropwizard.server.DefaultServerFactory;
@@ -34,7 +39,6 @@ class SampleApplication extends Application<ApplicationConfiguration> {
     public static void main(final String[] args) throws Exception {
         String[] param = {"server", "config.yml"};
         new SampleApplication().run(param);
-//        new SampleApplication().run(args);
     }
 
     @Override
@@ -64,6 +68,10 @@ class SampleApplication extends Application<ApplicationConfiguration> {
 
         env.jersey().register(injector.getInstance(CustomerResource.class));
         env.healthChecks().register(config.getAppConfig().getAppName(), new ApplicationHealthCheck(config.getAppConfig().getAppName()));
+
+        ApplicationService instance = injector.getInstance(ApplicationService.class);
+        instance.loadInitialData();
+
     }
 
     /**
@@ -77,11 +85,16 @@ class SampleApplication extends Application<ApplicationConfiguration> {
             protected void configure() {
                 // services
                 bind(CustomerService.class).to(CustomerServiceImpl.class);
+                bind(ApplicationService.class).to(ApplicationServiceImpl.class);
 
                 // dao
                 bind(CustomerDao.class).to(CustomerDaoImpl.class);
+                bind(ApplicationDao.class).to(ApplicationDaoImpl.class);
 
                 bind(AppConfiguration.class).toInstance(config.getAppConfig());
+
+                bind(MongoClient.class).toInstance(config.getAppConfig().getDataSource());
+
             }
         });
     }

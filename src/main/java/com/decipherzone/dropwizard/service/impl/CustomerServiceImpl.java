@@ -1,8 +1,9 @@
 package com.decipherzone.dropwizard.service.impl;
 
-import com.decipherzone.dropwizard.bean.Customer;
+
 import com.decipherzone.dropwizard.dao.CustomerDao;
 import com.decipherzone.dropwizard.service.CustomerService;
+import com.mongodb.BasicDBObject;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -25,7 +26,7 @@ public class CustomerServiceImpl implements CustomerService {
         this.customerDao = customerDao;
     }
 
-    public List<Customer> getAllCustomers(){
+    public List<BasicDBObject> getAllCustomers(){
         return customerDao.getAllCustomers();
     }
 
